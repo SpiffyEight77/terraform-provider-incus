@@ -19,7 +19,7 @@ func TestAccImageAlias_basic(t *testing.T) {
 				Config: testAccImageAlias_basic(),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("incus_image.img1", "source_image.remote", "images"),
-					resource.TestCheckResourceAttr("incus_image.img1", "source_image.name", "alpine/edge"),
+					resource.TestCheckResourceAttr("incus_image.img1", "source_image.name", "ubuntu/22.04"),
 					resource.TestCheckResourceAttr("incus_image.img1", "source_image.copy_aliases", "false"),
 					resource.TestCheckResourceAttr("incus_image_alias.alias1", "alias", "alpine-test"),
 					resource.TestCheckResourceAttr("incus_image_alias.alias1", "description", "Alpine Linux"),
@@ -41,7 +41,7 @@ func TestAccImageAlias_project(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("incus_project.project1", "name", projectName),
 					resource.TestCheckResourceAttr("incus_image.img1", "source_image.remote", "images"),
-					resource.TestCheckResourceAttr("incus_image.img1", "source_image.name", "alpine/edge"),
+					resource.TestCheckResourceAttr("incus_image.img1", "source_image.name", "ubuntu/22.04"),
 					resource.TestCheckResourceAttr("incus_image.img1", "source_image.copy_aliases", "false"),
 					resource.TestCheckResourceAttr("incus_image.img1", "project", projectName),
 					resource.TestCheckResourceAttr("incus_image_alias.alias1", "alias", "alpine-test"),
@@ -58,7 +58,7 @@ func testAccImageAlias_basic() string {
 resource "incus_image" "img1" {
   source_image = {
     remote       = "images"
-    name         = "alpine/edge"
+    name         = "ubuntu/22.04"
     copy_aliases = false
   }
 }
@@ -84,7 +84,7 @@ resource "incus_image" "img1" {
 
   source_image = {
     remote = "images"
-    name   = "alpine/edge"
+    name   = "ubuntu/22.04"
     copy_aliases = false
   }
 }
