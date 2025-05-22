@@ -59,16 +59,15 @@ resource "incus_image" "img1" {
   source_image = {
     remote       = "images"
     name         = "ubuntu/22.04"
-    copy_aliases = false
   }
+
+  aliases = [incus_image_alias.alias1.alias]
 }
 
 resource "incus_image_alias" "alias1" {
   alias          = "alpine-test"
   description    = "Alpine Linux"
   fingerprint    = incus_image.img1.fingerprint
-
-  depends_on = [incus_image.img1]
 }
 	`
 }
@@ -85,8 +84,9 @@ resource "incus_image" "img1" {
   source_image = {
     remote = "images"
     name   = "ubuntu/22.04"
-    copy_aliases = false
   }
+
+  aliases = [incus_image_alias.alias1.alias]
 }
 
 resource "incus_image_alias" "alias1" {
