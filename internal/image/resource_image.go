@@ -234,10 +234,7 @@ func (r ImageResource) Schema(_ context.Context, _ resource.SchemaRequest, resp 
 							Optional:    true,
 							Computed:    true,
 							Description: "The description for the image alias.",
-							PlanModifiers: []planmodifier.String{
-								stringplanmodifier.RequiresReplace(),
-							},
-							Default: stringdefault.StaticString(""),
+							Default:     stringdefault.StaticString(""),
 						},
 					},
 				},
